@@ -1,0 +1,1 @@
+-- TODO: skema tabel (users, boards, board_members, lists, cards, tokens, dst)

@@ -1,0 +1,11 @@
+# PHP
+vendor/
+
+# Config sensitif (jangan ikut ke-push kalau nanti isi kredensial asli)
+backend/config/database.php
+backend/config/smtp.php
+
+# OS/editor
+.DS_Store
+.vscode/
+*.log
