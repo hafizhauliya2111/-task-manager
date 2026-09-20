@@ -1,1 +1,55 @@
--- TODO: skema tabel (users, boards, board_members, lists, cards, tokens, dst)
+CREATE DATABASE IF NOT EXISTS taskManager_db;
+USE taskManager_db;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    is_verified BOOLEAN NOT NULL DEFAULT 0
+);
+
+CREATE TABLE tokens (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    token VARCHAR(100) NOT NULL UNIQUE,
+    jenis VARCHAR(100) NOT NULL,
+    used BOOLEAN NOT NULL DEFAULT false,
+    expired_at TIMESTAMP NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE boards (
+id INT AUTO_INCREMENT PRIMARY KEY,
+owner_id INT NOT NULL,
+name VARCHAR(100) NOT NULL,
+description TEXT,
+FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE board_members (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    board_id INT NOT NULL,
+    user_id INT NOT NULL,
+    role VARCHAR(100) NOT NULL,
+    UNIQUE (board_id, user_id),
+    FOREIGN KEY (board_id) REFERENCES boards(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE lists (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    board_id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    FOREIGN KEY (board_id) REFERENCES boards(id) ON DELETE CASCADE
+);
+
+CREATE TABLE cards (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    list_id INT NOT NULL,
+    judul VARCHAR(100) NOT NULL,
+    deskripsi TEXT,
+    deadline DATETIME NOT NULL,
+    position INT NOT NULL,
+    FOREIGN KEY (list_id) REFERENCES lists(id) ON DELETE CASCADE
+);
