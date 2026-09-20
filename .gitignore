@@ -1,5 +1,5 @@
 # PHP
-vendor/
+backend/vendor/
 
 # Config sensitif (jangan ikut ke-push kalau nanti isi kredensial asli)
 backend/config/database.php

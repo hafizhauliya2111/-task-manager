@@ -1,2 +1,6 @@
 <?php
-// TODO: fungsi generate token acak (dipakai untuk token login, verifikasi, reset password)
+
+function generateToken(){
+    $token = bin2hex(random_bytes(16));
+    return $token;
+}
