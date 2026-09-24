@@ -1,0 +1,40 @@
+/* ================================
+   GLOBAL RESET
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ================================
+   BODY
+================================ */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fb;
+    color: #1f2937;
+}
+
+
+/* ================================
+   BUTTON
+================================ */
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+
+/* ================================
+   INPUT
+================================ */
+
+input,
+button {
+    font-size: 16px;
+}
