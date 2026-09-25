@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost/task-manager/backend/api";
+const API_BASE_URL = "http://localhost/task-manager/backend";
 
 
 async function apiRequest(endpoint, options = {}) {
